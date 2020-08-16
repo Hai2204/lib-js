@@ -1,0 +1,27 @@
+$('#form-newPass, #form-oldPassword').on('keyup', function () {
+  if($('#form-newPass').val() !== '' && $('#form-oldPassword').val() !== '') {
+    if ($('#form-newPass').val() == $('#form-oldPassword').val()) {
+      $('#message').html('<i class="lar la-check-circle uk-position-absolute icon-newPassword" id="icon-oldPassword"></i>');
+    } else
+      $('#message').html('Not Matching').css('color', 'red');
+  }
+
+});
+-----------------------------------js ------------------------
+var check = function () {
+  if (
+    document.getElementById("form-newPass").value != '' ||
+    document.getElementById("form-oldPassword").value != ''
+  ) {
+    if (
+      document.getElementById("form-newPass").value ==
+      document.getElementById("form-oldPassword").value
+    ) {
+      document.getElementById("message").innerHTML =
+        '<i class="lar la-check-circle uk-position-absolute icon-truePassword" id="icon-oldPassword" uk-tooltip="title: Mật khẩu trùng khớp; pos: bottom-right"></i>';
+    } else {
+      document.getElementById("message").innerHTML =
+        '<i class="las la-exclamation-circle uk-position-absolute icon-wrongPassword" id="icon-oldPassword" uk-tooltip="title: Mật khẩu không khớp; pos: bottom-right"></i>';
+    }
+  }
+};

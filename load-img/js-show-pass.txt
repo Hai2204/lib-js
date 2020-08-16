@@ -1,0 +1,15 @@
+const iconPassword = document.getElementById("iconPassword");
+const inputPassword = document.getElementById("password");
+// console.log(password);
+const onToggleTypePassword = () => {
+  if (inputPassword !== null) {
+    iconPassword.classList.toggle("la-low-vision");
+    if (inputPassword.type === "password") {
+      inputPassword.type = "text";
+    } else {
+      inputPassword.type = "password";
+    }
+  }
+};
+
+iconPassword.addEventListener("click", onToggleTypePassword);

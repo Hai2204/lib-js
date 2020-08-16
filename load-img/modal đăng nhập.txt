@@ -1,0 +1,155 @@
+          <li>
+            <a href="#modal-login" class="uk-visible@l uk-text-uppercase active-hover" title="Tài Khoản" style="font-weight: 600;" uk-toggle>
+              <i class="las la-user uk-margin-small-right" style="font-size: 20px;"></i>
+              Đăng Nhập
+            </a>
+            <div id="modal-login" uk-modal>
+              <div class="uk-modal-dialog">
+                  <button class="uk-modal-close-default uk-text-secondary" type="button" uk-close></button>
+                  <div class="uk-modal-header uk-background-danger uk-padding-remove-bottom">
+                    <!--  -->
+                    <ul class="uk-list uk-flex uk-list-collapse uk-text-center uk-subnav-pill" uk-tab="connect: .switcher-container;animation: uk-animation-fade" style="margin-left: 0;">
+                        <li >
+                          <a href="#" uk-toggle="target: #login" class="uk-text-center uk-margin-right">
+                            <h2 class="uk-modal-title  uk-text-while " >Đăng Nhập</h2>
+                          </a>
+                        </li>
+                        <li class="uk-divider-vertical"></li>
+                        <li class="uk-margin-large-right ">
+                          <a href="#" uk-toggle="target: #createAcount" class="uk-text-center">
+                            <h2 class="uk-modal-title  uk-text-center uk-flex-center uk-text-while" >Đăng Ký</h2>
+                          </a>
+                        </li>
+                    </ul>
+                  </div>
+                  <ul class="uk-switcher switcher-container">
+                    <li class="uk-active">
+                      <div class="uk-modal-body" id="login">
+                        <div class="uk-card uk-card-body uk-text-center">
+                          <form class="uk-form-horizontal uk-margin-large">
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="form-horizontal-text" style="width: 100px">Tài Khoản :</label>
+                                <div class="uk-form-controls" style="margin-left: 0;">
+                                  <div class="uk-margin">
+                                    <div class="uk-inline">
+                                        <span class="uk-form-icon" uk-icon="icon: user"></span>
+                                        <input class="uk-input uk-input2" type="user" placeholder="Email hoặc số điện thoại">
+                                    </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="uk-margin">
+                              <label class="uk-form-label" for="form-horizontal-text" style="width: 100px">Mật Khẩu :</label>
+                              <div class="uk-form-controls" style="margin-left: 0;">
+                                <div class="uk-margin">
+                                  <div class="uk-inline">
+                                      <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                                      <input class="uk-input uk-input2" type="password" placeholder="Mật Khẩu">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="uk-margin" >
+                                <a href="#" target="_blank"><i class="uk-link "style="margin-right: 40px;">Quên mật khẩu?</i></a>
+                            </div>
+                            <div class="uk-margin">
+                                <label for="text" class="uk-text-uppercase uk-text-bold">Đăng Nhập Với</label>
+                            </div>
+                            <div class="uk-margin" uk-grid>
+                              <div class="uk-width-1-2 uk-padding-remove-left">
+                                <a class="uk-button uk-button-small uk-button-primary uk-border-rounded" type="button">
+                                  <div class="uk-inline">
+                                    <span class="uk-form-icon uk-text-while" uk-icon="icon: facebook"></span>
+                                    <label class="uk-form-label" for="form-horizontal-text" style="margin-top: 0;">facebook</label>
+                                    </div>
+                                </a>
+                              </div>
+                              <div class="uk-width-1-2">
+                                <a class="uk-button uk-button-small uk-button-danger uk-border-rounded" type="button">
+                                  <div class="uk-inline">
+                                    <span class="uk-form-icon uk-text-while" uk-icon="icon: google"></span>
+                                    <label class="uk-form-label" for="form-horizontal-text" style="margin-top: 0;">Google</label>
+                                    </div>
+                                </a>
+                              </div>
+                          </div>
+                        </form>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="uk-active" id="createAcount">
+                        <div class="uk-card uk-card-body uk-text-center">
+                          <form class="uk-form-horizontal uk-margin-large">
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="form-horizontal-text" style="width: 150px">Tài Khoản :</label>
+                                <div class="uk-form-controls" style="margin-left: 0;">
+                                  <div class="uk-margin">
+                                    <div class="uk-inline">
+                                        <span class="uk-form-icon" uk-icon="icon: user"></span>
+                                        <input class="uk-input uk-input2" type="user" placeholder="Email hoặc số điện thoại">
+                                    </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="uk-margin">
+                              <label class="uk-form-label" for="form-horizontal-text" style="width: 150px">Mật Khẩu :</label>
+                              <div class="uk-form-controls" style="margin-left: 0;">
+                                <div class="uk-margin">
+                                  <div class="uk-inline">
+                                      <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                                      <input class="uk-input uk-input2" type="password" placeholder="Tạo Mật Khẩu">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="uk-margin">
+                              <label class="uk-form-label" for="form-horizontal-text" style="width: 150px">Xác Nhận Mật Khẩu :</label>
+                              <div class="uk-form-controls" style="margin-left: 0;">
+                                <div class="uk-margin">
+                                  <div class="uk-inline">
+                                      <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                                      <input class="uk-input uk-input2" type="password" placeholder="Xác Nhận Mật Khẩu">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="uk-margin">
+                                <label for="text" class="uk-text-uppercase uk-text-bold">Tạo Tài Khoản Bằng</label>
+                            </div>
+                            <div class="uk-margin" uk-grid>
+                                <div class="uk-width-1-2">
+                                  <a class="uk-button uk-button-small uk-button-primary uk-border-rounded" type="button">
+                                    <div class="uk-inline">
+                                      <span class="uk-form-icon uk-text-while" uk-icon="icon: facebook"></span>
+                                      <label class="uk-form-label" for="form-horizontal-text" style="margin-top: 0;">facebook</label>
+                                      </div>
+                                  </a>
+                                </div>
+                                <div class="uk-width-1-2">
+                                  <a class="uk-button uk-button-small uk-button-danger uk-border-rounded" type="button">
+                                    <div class="uk-inline">
+                                      <span class="uk-form-icon uk-text-while" uk-icon="icon: google"></span>
+                                      <label class="uk-form-label" for="form-horizontal-text" style="margin-top: 0;">Google</label>
+                                      </div>
+                                  </a>
+                                </div>
+                            </div>
+                            <div class="uk-margin uk-text-left" >
+                              <a href="#" target="_blank"><i class="uk-link ">Quy định sử dụng tài khoản </i></a>
+                          </div>
+                        </form>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                  
+                  
+                  <div class="uk-modal-footer uk-text-right">
+                      <button class="uk-button uk-button-default uk-modal-close uk-border-rounded" type="button">Cancel</button>
+                      <button class="uk-button uk-button-danger uk-border-rounded" type="submit">Đăng Nhập</button>
+                  </div>
+                </div>
+              </div>
+            
+          </li>

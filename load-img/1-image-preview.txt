@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hiển thị ảnh trước khi upload</title>
+    <style type="text/css">
+        .wrapper {
+            margin: 20% auto;
+            width: 60%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1>Hiển thị ảnh trước khi upload</h1>
+        <input type="file" name="upload" id="upload" onchange="ImagesFileAsURL()" />
+        <div id="displayImg">
+
+        </div>
+        <script type="text/javascript">
+            function ImagesFileAsURL() {
+                var fileSelected = document.getElementById('upload').files;
+                if (fileSelected.length > 0) {
+                    var fileToLoad = fileSelected[0];
+                    var fileReader = new FileReader();
+                    fileReader.onload = function(fileLoaderEvent) {
+                        var srcData = fileLoaderEvent.target.result;
+                        var newImage = document.createElement('img');
+                        newImage.src = srcData;
+                        document.getElementById('displayImg').innerHTML = newImage.outerHTML;
+                    }
+                    fileReader.readAsDataURL(fileToLoad);
+                }
+            }
+        </script>
+    </div>
+</body>
+
+</html>
