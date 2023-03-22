@@ -1,0 +1,88 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+public class App {
+    public static List<Letters> letters1 = new ArrayList<>();
+
+    private static void genData(){
+        letters1.add(new Letters("Săt", 0, 0.4));
+        letters1.add(new Letters("Đồng", 0, 0.3));
+        letters1.add(new Letters("Bạc", 0, 0.2));
+        letters1.add(new Letters("Vàng", 0, 0.075));
+        letters1.add(new Letters("Bạch Kim", 0, 0.025));
+    }
+
+    private static List<Letters> weightedProbability(List<Letters> letters, int testCount) {
+        List<Double> cumulativeProbabilities = new ArrayList<>();
+        double sum = 0;
+        for (Letters l : letters) {
+            sum += l.getProbability();
+            cumulativeProbabilities.add(sum);
+        }
+        for (int i = 0; i < testCount; i++) {
+            double r = Math.random();
+            //Select a letter based on the cumulative probabilities
+            String selectedLetter = letters.stream()
+                    //Find the first letter whose cumulative probability is greater than the random number
+                    .filter(l -> r < cumulativeProbabilities.get(letters.indexOf(l)))
+                    .findFirst().get().getLetter();
+
+            //Increment the count for the selected letter
+            letters.stream()
+                    .filter(a -> a.getLetter().equals(selectedLetter))
+                    .findFirst()
+                    .ifPresent(l -> l.setCount(l.getCount() + 1));
+        }
+        //After 'testCount' loops, print out the number of times each letter was selected and the percentage it represents
+//        for (Letters letter : letters) {
+//            System.out.println(letter.getLetter()
+//                    + " -> " + letter.getCount()
+//                    + "(" + String.format("%.2f", (letter.getCount() * Math.pow(testCount, -1)) * 100) + "%)");
+//        }
+        //Reset the count for each letter to 0
+//        letters.forEach(a -> a.setCount(0));
+        return letters;
+    }
+    private static void nonWeightedProbability(List<Letters> letters, int testCount) {
+        for (int i = 0; i < testCount; i++) {
+            // Generate random number between 0 and size of letters list minus 1
+            Random random = new Random();
+            int min = 0;
+            int max = letters.size() - 1;
+            int randomNumber = random.nextInt(max - min + 1) + min;
+
+            // Select letter at index of random number and increment its count by 1
+            String selectedLetter = letters.get(randomNumber).getLetter();
+            letters.stream()
+                    .filter(a -> a.getLetter().equals(selectedLetter))
+                    .findFirst()
+                    .ifPresent(l -> l.setCount(l.getCount() + 1));
+        }
+
+        // Print count and percentage of each letter
+        for (Letters letter : letters) {
+            System.out.println(letter.getLetter()
+                    + " -> " + letter.getCount()
+                    + "(" + String.format("%.2f", (letter.getCount() * Math.pow(testCount, -1)) * 100) + "%)");
+        }
+
+        // Reset count of each letter to 0
+        letters.forEach(a -> a.setCount(0));
+    }
+
+
+
+    public static void main(String[] args) throws Exception {
+        genData();
+        int testCount = 100000;
+        List<Letters> letters = weightedProbability(letters1, testCount);
+
+        //After 'testCount' loops, print out the number of times each letter was selected and the percentage it represents
+        for (Letters letter : letters) {
+            System.out.println(letter.getLetter()
+                    + " -> " + letter.getCount()
+                    + "(" + String.format("%.2f", (letter.getCount() * Math.pow(testCount, -1)) * 100) + "%)");
+        }
+    }
+}

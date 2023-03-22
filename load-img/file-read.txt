@@ -1,0 +1,67 @@
+import au.com.bytecode.opencsv.CSVWriter;
+
+import java.io.*;
+import java.util.Scanner;
+
+public class App {
+
+
+    private static String[][] readFile(String link) throws IOException {
+        String[][] arr = new String[12][22];
+        FileInputStream fileInputStream = new FileInputStream(link);
+        Scanner scanner = new Scanner(fileInputStream);
+        try {
+            int i = 0;
+            while (scanner.hasNextLine()) {
+                String str = scanner.nextLine();
+                String str1 = str.replaceAll("\\s", "_");
+                String[] ar = str1.split("_");
+                for (int j = 0; j < ar.length; j++){
+                    arr[i][j] = ar[j];
+                }
+                i++;
+            }
+        }
+        finally {
+            try {
+                scanner.close();
+                fileInputStream.close();
+            } catch (IOException ex) {
+                System.out.println(ex);
+            }
+        }
+        return arr;
+    }
+
+    public static void exportDataToExcel(String fileName, String[][] data) throws FileNotFoundException, IOException
+    {
+
+        File file = new File(fileName);
+        if (!file.isFile())
+            file.createNewFile();
+
+        CSVWriter csvWriter = new CSVWriter(new FileWriter(file));
+
+        int rowCount = data.length;
+
+        for (int i = 0; i < rowCount; i++)
+        {
+            int columnCount = data[i].length;
+            String[] values = new String[columnCount];
+            for (int j = 0; j < columnCount; j++)
+            {
+                values[j] = data[i][j] + "";
+            }
+            csvWriter.writeNext(values);
+        }
+
+        csvWriter.flush();
+        csvWriter.close();
+    }
+    public static void main(String[] args) throws Exception {
+        String[][] ar = readFile("C:\\Users\\grooo-13\\Desktop\\arr.txt");
+        String str = ar.toString();
+        exportDataToExcel("C:\\Users\\grooo-13\\Desktop\\text123.txt", ar);
+        System.out.println(str);
+    }
+}

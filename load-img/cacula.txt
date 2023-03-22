@@ -1,0 +1,28 @@
+    private static Date calculateWorkingDays(Date startDate, Integer duration, String type) {
+        Calendar startCal = Calendar.getInstance();
+        startCal.setTime(startDate);
+        for (int i = 1; i < duration; i++) {
+            startCal.add(Calendar.DAY_OF_MONTH, 1);
+            if (type == "NUM_WORK") {
+                while (startCal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || startCal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+                    startCal.add(Calendar.DAY_OF_MONTH, 1);
+                }
+            }
+        }
+        if (type == "NUM_WORK" && (duration == 1 || startCal.get(Calendar.DAY_OF_WEEK) + 1 == Calendar.SATURDAY || startCal.get(Calendar.DAY_OF_WEEK) + 1 == Calendar.SUNDAY)) {
+            startCal.add(Calendar.DAY_OF_MONTH, 1);
+            while (startCal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || startCal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+                startCal.add(Calendar.DAY_OF_MONTH, 1);
+            }
+        }else {
+            startCal.add(Calendar.DAY_OF_MONTH, 1);
+        }
+        return startCal.getTime();
+    }
+
+
+---------
+        // Date dayT = new Date("");
+        Date d = calculateWorkingDays(new Date(), 2 , "NUM_CALENDAR");
+        System.out.println(d);
+
